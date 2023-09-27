@@ -1,4 +1,5 @@
 
+[![My_Build](https://github.com/ProstoARS/Test_task_Game_for_Hands_and_Hands/actions/workflows/maven-publish.yml/badge.svg)](https://github.com/ProstoARS/Test_task_Game_for_Hands_and_Hands/actions/workflows/maven-publish.yml)
 
 ## Тестовое задание для поступающих в школу разработки Heads x Hands
 
