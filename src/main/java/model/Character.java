@@ -1,16 +1,16 @@
-package Model;
+package model;
 
 public abstract class Character {
 
-    private String name;
+    private final String name;
 
-    private int attack;
+    private final int attack;
 
-    private int protection;
+    private final int protection;
 
-    private int health;
+    private final int health;
 
-    private Damage damage;
+    private final Damage damage;
 
     public Character(String name, int attack, int protection, int health, Damage damage) {
         this.name = name;
