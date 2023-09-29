@@ -1,16 +1,22 @@
 package service;
 
 
+import model.Character;
+
 import java.util.Random;
 
 public class GameLogic {
 
+    public static final int CUBE_SIDES = 6;
+    public static final int INDENTATION = 1;
+    public static final int MODIFIER_CONSTANT = 1;
+
     public static int gameCubeAction() {
-        return new Random().nextInt(6) + 1;
+        return new Random().nextInt(CUBE_SIDES) + INDENTATION;
     }
 
     public int attackModifier(int attack, int protection) {
-        return attack - protection + 1;
+        return attack - protection + MODIFIER_CONSTANT;
     }
 
     public boolean checkAttack(int attackModifier) {
@@ -25,6 +31,13 @@ public class GameLogic {
             }
         } while (countCube < attackModifier);
         return check;
+    }
+
+    public int healthDecrease(Character character, int attackValue) {
+        int health = character.getHealth();
+        int newHeath = health - attackValue;
+        character.setHealth(newHeath);
+        return newHeath;
     }
 
 }

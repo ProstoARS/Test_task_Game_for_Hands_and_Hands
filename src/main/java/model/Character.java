@@ -8,7 +8,7 @@ public abstract class Character {
 
     private final int protection;
 
-    private final int health;
+    private int health;
 
     private final Damage damage;
 
@@ -18,5 +18,12 @@ public abstract class Character {
         this.protection = protection;
         this.health = health;
         this.damage = damage;
+    }
+
+    public int getHealth() {
+        return this.health;
+    }
+    public void setHealth(int health) {
+        this.health = health;
     }
 }

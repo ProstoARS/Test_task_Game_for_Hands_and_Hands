@@ -1,3 +1,4 @@
+import model.Monster;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import service.GameLogic;
@@ -42,5 +43,15 @@ public class GameLogicTest {
             boolean result = gameLogic.checkAttack(3);
             assertThat(result).isFalse();
         }
+    }
+
+    @Test
+    public void whenHealthDecreases() {
+        Monster monster = mock(Monster.class);
+        when(monster.getHealth()).thenReturn(7);
+        int attackValue = 5;
+        GameLogic gameLogic = new GameLogic();
+        int result = gameLogic.healthDecrease(monster, attackValue);
+        assertThat(result).isEqualTo(2);
     }
 }
