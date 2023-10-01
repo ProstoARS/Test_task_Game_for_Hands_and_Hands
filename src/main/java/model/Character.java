@@ -20,6 +20,10 @@ public abstract class Character {
         this.damage = damage;
     }
 
+    public boolean checkDeathCharacter() {
+        return this.health <= 0;
+    }
+
     public int getHealth() {
         return this.health;
     }
