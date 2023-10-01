@@ -8,11 +8,11 @@ import java.util.Random;
 public class GameLogic {
 
     public static final int CUBE_SIDES = 6;
-    public static final int INDENTATION = 1;
+    public static final int INDENT = 1;
     public static final int MODIFIER_CONSTANT = 1;
 
     public static int gameCubeAction() {
-        return new Random().nextInt(CUBE_SIDES) + INDENTATION;
+        return new Random().nextInt(CUBE_SIDES) + INDENT;
     }
 
     public int attackModifier(int attack, int protection) {
