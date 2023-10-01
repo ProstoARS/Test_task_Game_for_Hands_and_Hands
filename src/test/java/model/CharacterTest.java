@@ -10,8 +10,7 @@ class CharacterTest {
     @Test
     public void whenCheckDeath() {
         Gamer gamer = new Gamer(anyString(), anyInt(), anyInt(), 30, any(Damage.class));
-        gamer.setHealth(0);
-        assertThat(gamer.checkDeathCharacter()).isTrue();
+        assertThat(gamer.checkDeathCharacter(0)).isTrue();
     }
 
 }

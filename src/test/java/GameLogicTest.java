@@ -1,3 +1,4 @@
+import exceptions.CharacterDeathException;
 import model.Monster;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
@@ -46,7 +47,7 @@ public class GameLogicTest {
     }
 
     @Test
-    public void whenHealthDecreases() {
+    public void whenHealthDecreases() throws CharacterDeathException {
         Monster monster = mock(Monster.class);
         when(monster.getHealth()).thenReturn(7);
         int attackValue = 5;

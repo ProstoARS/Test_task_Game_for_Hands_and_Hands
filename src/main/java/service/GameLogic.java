@@ -1,6 +1,7 @@
 package service;
 
 
+import exceptions.CharacterDeathException;
 import model.Character;
 
 import java.util.Random;
@@ -33,7 +34,7 @@ public class GameLogic {
         return check;
     }
 
-    public int healthDecrease(Character character, int attackValue) {
+    public int healthDecrease(Character character, int attackValue) throws CharacterDeathException {
         int health = character.getHealth();
         int newHeath = health - attackValue;
         character.setHealth(newHeath);

@@ -1,5 +1,7 @@
 package model;
 
+import exceptions.CharacterDeathException;
+
 public class Gamer extends Character {
 
     private final int maxHealth;
@@ -9,7 +11,7 @@ public class Gamer extends Character {
         this.maxHealth = health;
     }
 
-    public int recoveryHealth() {
+    public int recoveryHealth() throws CharacterDeathException {
         double recoveryValue = maxHealth * 0.3;
         int newHeath = super.getHealth() + (int) Math.round(recoveryValue);
         if (newHeath > maxHealth) {
