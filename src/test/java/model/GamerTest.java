@@ -16,4 +16,13 @@ class GamerTest {
                 .isEqualTo(gamer.getHealth());
     }
 
+    @Test
+    public void whenGamerRecoveryHealthThenHealthNotRiseMaxValue() {
+        Gamer gamer = new Gamer(anyString(), anyInt(), anyInt(), 30, any(Damage.class));
+        gamer.setHealth(25);
+        int result = gamer.recoveryHealth();
+        assertThat(result).isEqualTo(30)
+                .isEqualTo(gamer.getHealth());
+    }
+
 }

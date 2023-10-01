@@ -12,6 +12,9 @@ public class Gamer extends Character {
     public int recoveryHealth() {
         double recoveryValue = maxHealth * 0.3;
         int newHeath = super.getHealth() + (int) Math.round(recoveryValue);
+        if (newHeath > maxHealth) {
+            newHeath = maxHealth;
+        }
         super.setHealth(newHeath);
         return newHeath;
     }
