@@ -45,7 +45,6 @@ class FightTest {
         }
     }
 
-
     @Test
     public void whenCharactersFightOneRoundThenAttackFail() {
         try (MockedStatic<GameLogic> mockedGameLogic = mockStatic(GameLogic.class)) {

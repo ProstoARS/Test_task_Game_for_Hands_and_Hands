@@ -52,4 +52,15 @@ public abstract class Character {
         }
         this.health = health;
     }
+
+    @Override
+    public String toString() {
+        return "Character{"
+               + "name='" + name + '\''
+               + ", attack=" + attack
+               + ", protection=" + protection
+               + ", health=" + health
+               + ", damage=" + damage
+               + '}';
+    }
 }
