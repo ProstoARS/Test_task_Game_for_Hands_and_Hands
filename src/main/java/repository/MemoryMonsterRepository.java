@@ -6,7 +6,7 @@ import model.Monster;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MemoryMonsterRepository {
+public class MemoryMonsterRepository implements IMonsterRepository {
 
     private final List<Monster> monsters = new ArrayList<>();
     private int id = 1;
@@ -17,16 +17,19 @@ public class MemoryMonsterRepository {
         addMonster(new Monster("Вурдалак", 25, 10, 23, new Damage(8, 12)));
     }
 
+    @Override
     public Monster addMonster(Monster monster) {
         monster.setId(id++);
         monsters.add(monster);
         return monster;
     }
 
+    @Override
     public Monster findById(int id) {
         return monsters.get(id);
     }
 
+    @Override
     public List<Monster> findAll() {
         return List.copyOf(this.monsters);
     }

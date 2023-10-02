@@ -6,7 +6,7 @@ import model.Gamer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MemoryGamerRepository {
+public class MemoryGamerRepository implements IGamerRepository {
 
     private final List<Gamer> gamers = new ArrayList<>();
     private int id = 1;
@@ -17,16 +17,19 @@ public class MemoryGamerRepository {
         addGamer(new Gamer("Ниндзя", 30, 10, 20, new Damage(15, 20)));
     }
 
+    @Override
     public Gamer addGamer(Gamer gamer) {
         gamer.setId(id++);
         gamers.add(gamer);
         return gamer;
     }
 
+    @Override
     public Gamer findById(int id) {
         return gamers.get(id);
     }
 
+    @Override
     public List<Gamer> findAll() {
         return List.copyOf(this.gamers);
     }
