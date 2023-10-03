@@ -17,4 +17,9 @@ public class Damage {
         int delta = to - from;
         return new Random().nextInt(delta + INDENTATION) + from;
     }
+
+    @Override
+    public String toString() {
+        return from + " - " + to;
+    }
 }
