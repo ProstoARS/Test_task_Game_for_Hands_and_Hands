@@ -3,6 +3,7 @@ package service;
 import io.Input;
 import io.Output;
 import repository.IGamerRepository;
+import repository.IMonsterRepository;
 
 public class Exit implements UserAction {
     private final Output out;
@@ -13,12 +14,11 @@ public class Exit implements UserAction {
 
     @Override
     public String name() {
-        return "Exit Program";
+        return "Завершить Игру";
     }
 
     @Override
-    public int execute(Input input, IGamerRepository repository) {
-        out.println("==== Exit Program ====");
+    public int execute(Input input, IGamerRepository repository, IMonsterRepository monsterRepository) {
         return -1;
     }
 }

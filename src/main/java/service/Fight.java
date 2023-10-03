@@ -12,7 +12,7 @@ public class Fight {
         this.gameLogic = gameLogic;
     }
 
-    public void startOneRoundFight(Character characterAttack, Character characterDefence) {
+    public boolean startOneRoundFight(Character characterAttack, Character characterDefence) {
         int attackModifier = gameLogic.attackModifier(characterAttack.getAttack(), characterDefence.getProtection());
         boolean checkAttack = gameLogic.checkAttack(attackModifier);
         if (checkAttack) {
@@ -20,13 +20,14 @@ public class Fight {
             try {
                 gameLogic.healthDecrease(characterDefence, attackValue);
             } catch (CharacterDeathException e) {
-                System.out.printf("Персонаж %s умер.", characterDefence.getName());
-                return;
+                System.out.printf("Персонаж %s умер.\n\r", characterDefence.getName());
+                return true;
             }
-            System.out.printf("Здоровье персонажа %s уменьшилось на %s и стало равно %s hp.",
+            System.out.printf("Здоровье персонажа %s уменьшилось на %s и стало равно %s hp.\n\r",
                     characterDefence.getName(), attackValue, characterDefence.getHealth());
         } else {
-            System.out.printf("Персонаж %s отразил атаку", characterDefence.getName());
+            System.out.printf("Персонаж %s отразил атаку\n\r", characterDefence.getName());
         }
+        return false;
     }
 }
