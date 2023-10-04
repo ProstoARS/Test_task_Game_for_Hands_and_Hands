@@ -12,9 +12,9 @@ public class MemoryMonsterRepository implements IMonsterRepository {
     private int id = 1;
 
     public MemoryMonsterRepository() {
-        addMonster(new Monster("Троль", 15, 20, 20, new Damage(6, 11)));
-        addMonster(new Monster("Виверна", 20, 15, 15, new Damage(3, 9)));
-        addMonster(new Monster("Вурдалак", 25, 10, 23, new Damage(8, 12)));
+        addMonster(new Monster("Троль", 15, 20, 20, new Damage(1, 8)));
+        addMonster(new Monster("Виверна", 20, 15, 15, new Damage(2, 6)));
+        addMonster(new Monster("Вурдалак", 25, 10, 23, new Damage(6, 10)));
     }
 
     @Override

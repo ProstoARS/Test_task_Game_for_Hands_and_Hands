@@ -1,3 +1,4 @@
+import exceptions.CharacterDeathException;
 import io.*;
 import model.Gamer;
 import model.Monster;
@@ -5,10 +6,10 @@ import repository.IGamerRepository;
 import repository.IMonsterRepository;
 import repository.MemoryGamerRepository;
 import repository.MemoryMonsterRepository;
-import service.CharacterSelection;
-import service.Exit;
-import service.StartGame;
-import service.UserAction;
+import service.*;
+
+import static java.lang.System.*;
+import static service.WinLooseConstant.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -42,15 +43,20 @@ public class GameRunner {
             List<Monster> monsterList = monsterRepository.findAll();
             try {
                 run = new StartGame(input, out, gamer, monsterList).execute();
-            } catch (InterruptedException e) {
+            } catch (InterruptedException | CharacterDeathException e) {
                 out.println("Игра зависла");
+            }
+            if (run == WINNER_OUT_GAME) {
+                out.println(lineSeparator() + "--- Поздравляем, вы победили! ---" + lineSeparator());
+            } else if (run == LOOSE_OUT_GAME) {
+                out.println(lineSeparator() + "--- Вы проиграли ---" + lineSeparator());
             }
         }
         out.println("----- Игра закончилась -----");
     }
 
     private void showMenu(List<UserAction> actions) {
-        out.println("Menu.");
+        out.println("==== Menu ====");
         for (int index = 0; index < actions.size(); index++) {
             out.println(index + ". " + actions.get(index).name());
         }

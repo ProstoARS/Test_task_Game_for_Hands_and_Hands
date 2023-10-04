@@ -16,13 +16,15 @@ public class Gamer extends Character {
     }
 
     public int recoveryHealth() throws CharacterDeathException {
-        double recoveryValue = maxHealth * 0.3;
-        int newHeath = super.getHealth() + (int) Math.round(recoveryValue);
+        int oldHeath = getHealth();
+        int recoveryValue = (int) Math.round(maxHealth * 0.3);
+        int newHeath = super.getHealth() + recoveryValue;
         if (newHeath > maxHealth) {
             newHeath = maxHealth;
+            recoveryValue = newHeath - oldHeath;
         }
         super.setHealth(newHeath);
-        return newHeath;
+        return recoveryValue;
     }
 
     public int getId() {

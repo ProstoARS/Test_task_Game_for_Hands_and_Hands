@@ -17,6 +17,7 @@ public class Fight {
         boolean checkAttack = gameLogic.checkAttack(attackModifier);
         if (checkAttack) {
             int attackValue = characterAttack.getDamage().attackValue();
+            System.out.printf("%s наносит %s урона\n\r", characterAttack.getName(), attackValue);
             try {
                 gameLogic.healthDecrease(characterDefence, attackValue);
             } catch (CharacterDeathException e) {

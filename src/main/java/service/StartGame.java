@@ -1,10 +1,15 @@
 package service;
 
+import exceptions.CharacterDeathException;
 import io.Input;
 import io.Output;
 import model.Gamer;
 import model.Monster;
+
 import java.util.List;
+
+import static java.lang.System.*;
+import static service.WinLooseConstant.*;
 
 public class StartGame {
 
@@ -24,28 +29,58 @@ public class StartGame {
         return "Start Game";
     }
 
-    public int execute() throws InterruptedException {
+    public int execute() throws InterruptedException, CharacterDeathException {
         output.println("==== Start Game ====");
         GameLogic gameLogic = new GameLogic();
         Fight fight = new Fight(gameLogic);
         for (Monster monster : monsters) {
             Thread.sleep(1000);
-
-            output.println(gamer.getName() + " на тебя напал " + monster.getName());
+            int action;
+            int recoveryAction = 4;
+            output.println(lineSeparator() + "--- " + gamer.getName()
+                           + " на тебя напал " + monster.getName() + " ---");
+            output.println("У " + monster.getName() + " " + monster.getHealth() + " здоровья");
             while (true) {
-               if (fight.startOneRoundFight(monster, gamer)) {
-                   return -1;
-               } else {
-                   output.println(gamer.getName() + " ваша очередь");
-                   if (fight.startOneRoundFight(gamer, monster)) {
-                       break;
-                   } else {
-                       output.println(monster.getName() + " опять атакует");
-                   }
-               }
-
+                Thread.sleep(1000);
+                if (fight.startOneRoundFight(monster, gamer)) {
+                    return LOOSE_OUT_GAME;
+                } else {
+                    output.println("--- " + gamer.getName() + " ваша очередь ---" + lineSeparator());
+                    action = gamerAction();
+                }
+                if (action == 1) {
+                    if (fight.startOneRoundFight(gamer, monster)) {
+                        break;
+                    } else {
+                        output.println(monster.getName() + " опять атакует");
+                    }
+                } else {
+                    if (recoveryAction > 0) {
+                        output.println("Вы восстановили здоровье на: " + gamer.recoveryHealth()
+                                       + " теперь оно равняется " + gamer.getHealth());
+                        recoveryAction--;
+                        output.println("Лечений осталось: " + recoveryAction);
+                    } else {
+                        output.println("Вы больше не можете лечиться");
+                    }
+                }
             }
         }
-        return 0;
+        return WINNER_OUT_GAME;
     }
+
+    private int gamerAction() {
+        int action;
+        while (true) {
+            output.println("Ваше действие:\n\r 1. Атаковать\n\r 2. Лечиться");
+            action = input.askInt("Выберите: ");
+            if (action == 1 || action == 2) {
+                break;
+            }
+            output.println("Введите значения из меню");
+        }
+        return action;
+    }
+
 }
+

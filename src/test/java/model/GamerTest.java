@@ -12,7 +12,7 @@ class GamerTest {
     public void whenGamerRecoveryHealth() throws CharacterDeathException {
         Gamer gamer = new Gamer(anyString(), anyInt(), anyInt(), 30, any(Damage.class));
         gamer.setHealth(10);
-        int result = gamer.recoveryHealth();
+        int result = gamer.getHealth() + gamer.recoveryHealth();
         assertThat(result).isEqualTo(19)
                 .isEqualTo(gamer.getHealth());
     }
@@ -21,7 +21,7 @@ class GamerTest {
     public void whenGamerRecoveryHealthThenHealthNotRiseMaxValue() throws CharacterDeathException {
         Gamer gamer = new Gamer(anyString(), anyInt(), anyInt(), 30, any(Damage.class));
         gamer.setHealth(25);
-        int result = gamer.recoveryHealth();
+        int result = gamer.getHealth() + gamer.recoveryHealth();
         assertThat(result).isEqualTo(30)
                 .isEqualTo(gamer.getHealth());
     }

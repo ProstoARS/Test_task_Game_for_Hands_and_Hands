@@ -40,7 +40,7 @@ class FightTest {
             Fight fight = new Fight(gameLogic);
             fight.startOneRoundFight(gamer, monster);
             assertThat(monster.getHealth()).isEqualTo(10);
-            assertThat("Здоровье персонажа Скелет уменьшилось на 5 и стало равно 10 hp.")
+            assertThat("Здоровье персонажа Скелет уменьшилось на 5 и стало равно 10 hp.\n\r")
                     .isEqualTo(output.toString());
         }
     }
@@ -55,7 +55,7 @@ class FightTest {
             Fight fight = new Fight(gameLogic);
             fight.startOneRoundFight(gamer, monster);
             assertThat(monster.getHealth()).isEqualTo(15);
-            assertThat("Персонаж Скелет отразил атаку").isEqualTo(output.toString());
+            assertThat("Персонаж Скелет отразил атаку\n\r").isEqualTo(output.toString());
         }
     }
 
@@ -70,7 +70,7 @@ class FightTest {
             Monster monster = new Monster("Скелет", 5, 10, 5, new Damage(1, 3));
             Fight fight = new Fight(gameLogic);
             fight.startOneRoundFight(gamer, monster);
-            assertThat("Персонаж Скелет умер.").isEqualTo(output.toString());
+            assertThat("Персонаж Скелет умер.\n\r").isEqualTo(output.toString());
         }
     }
 
