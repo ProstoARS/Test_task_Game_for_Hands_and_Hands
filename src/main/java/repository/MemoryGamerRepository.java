@@ -8,10 +8,13 @@ import java.util.List;
 
 public class MemoryGamerRepository implements IGamerRepository {
 
-    private final List<Gamer> gamers = new ArrayList<>();
-    private int id = 1;
+    private List<Gamer> gamers;
+    private int id;
 
-    public MemoryGamerRepository() {
+    @Override
+    public void init() {
+        this.id = 1;
+        this.gamers = new ArrayList<>();
         addGamer(new Gamer("Рыцарь", 15, 25, 30, new Damage(3, 9)));
         addGamer(new Gamer("Варвар", 20, 18, 30, new Damage(5, 12)));
         addGamer(new Gamer("Ниндзя", 30, 10, 20, new Damage(15, 20)));

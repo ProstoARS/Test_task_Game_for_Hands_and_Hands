@@ -34,6 +34,8 @@ public class GameRunner {
                 out.println("Неправильный ввод, выберите: 0 .. " + (actions.size() - 1));
                 continue;
             }
+            gamerRepository.init();
+            monsterRepository.init();
             UserAction action = actions.get(select);
             run = action.execute(input, gamerRepository, monsterRepository);
             if (run == -1) {
