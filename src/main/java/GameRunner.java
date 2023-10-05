@@ -22,10 +22,11 @@ public class GameRunner {
         this.out = out;
     }
 
-    public void init(Input input,
-                     IGamerRepository gamerRepository,
-                     IMonsterRepository monsterRepository,
-                     List<UserAction> actions) {
+    public void exe(Input input,
+                    IGamerRepository gamerRepository,
+                    IMonsterRepository monsterRepository,
+                    List<UserAction> actions,
+                    StartGame startGame) {
         int run = 0;
         while (run >= 0) {
             this.showMenu(actions);
@@ -44,9 +45,9 @@ public class GameRunner {
             Gamer gamer = gamerRepository.findById(run);
             List<Monster> monsterList = monsterRepository.findAll();
             try {
-                run = new StartGame(input, out, gamer, monsterList, new Fight(new GameLogic())).execute();
+                run = startGame.execute(gamer, monsterList);
             } catch (InterruptedException | CharacterDeathException e) {
-                out.println("Игра зависла");
+                System.out.println(e.getMessage());
             }
             if (run == WINNER_OUT_GAME) {
                 out.println(lineSeparator() + "--- Поздравляем, вы победили! ---" + lineSeparator());
@@ -69,10 +70,13 @@ public class GameRunner {
         Input input = new ValidateInput(output, new ConsoleInput());
         IGamerRepository gamerRepository = new MemoryGamerRepository();
         IMonsterRepository monsterRepository = new MemoryMonsterRepository();
+        GameLogic gameLogic = new GameLogic();
+        Fight fight = new Fight(gameLogic);
+        StartGame startGame = new StartGame(input, output, fight);
         List<UserAction> actions = Arrays.asList(
                 new CharacterSelection(output),
                 new Exit(output)
         );
-        new GameRunner(output).init(input, gamerRepository, monsterRepository, actions);
+        new GameRunner(output).exe(input, gamerRepository, monsterRepository, actions, startGame);
     }
 }

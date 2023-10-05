@@ -15,19 +15,13 @@ public class StartGame {
 
     private final Input input;
     private final Output output;
-    private final Gamer gamer;
-    private final List<Monster> monsters;
     private final Fight fight;
 
     public StartGame(Input input,
                      Output output,
-                     Gamer gamer,
-                     List<Monster> monsters,
                      Fight fight) {
         this.input = input;
         this.output = output;
-        this.gamer = gamer;
-        this.monsters = monsters;
         this.fight = fight;
     }
 
@@ -35,7 +29,7 @@ public class StartGame {
         return "Start Game";
     }
 
-    public int execute() throws InterruptedException, CharacterDeathException {
+    public int execute(Gamer gamer, List<Monster> monsters) throws InterruptedException, CharacterDeathException {
         output.println("==== Игра началась ====");
 
         int recoveryAction = 4;

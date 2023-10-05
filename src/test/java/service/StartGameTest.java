@@ -24,31 +24,32 @@ class StartGameTest {
 
     private StartGame startGame;
     private Input input;
-
     private Fight fight;
+    private Gamer knight;
+    private Monster troll;
 
     @BeforeEach
     public void prepare() {
         this.input = mock(Input.class);
         this.fight = mock(Fight.class);
         Output output = new StubOutput();
-        Gamer knight = new Gamer("Рыцарь", 15, 25, 30, new Damage(3, 9));
-        Monster troll = new Monster("Троль", 15, 20, 20, new Damage(1, 8));
-        this.startGame = new StartGame(input, output, knight, List.of(troll), fight);
+        this.knight = new Gamer("Рыцарь", 15, 25, 30, new Damage(3, 9));
+        this.troll = new Monster("Троль", 15, 20, 20, new Damage(1, 8));
+        this.startGame = new StartGame(input, output, fight);
     }
 
     @Test
     void whenGamerWin() throws CharacterDeathException, InterruptedException {
         when(input.askInt(anyString())).thenReturn(1);
         when(fight.startOneRoundFight(any(Gamer.class), any(Monster.class))).thenReturn(true);
-        int rsl = startGame.execute();
+        int rsl = startGame.execute(knight, List.of(troll));
         assertThat(rsl).isEqualTo(WINNER_OUT_GAME);
     }
 
     @Test
     void whenGamerLoose() throws CharacterDeathException, InterruptedException {
         when(fight.startOneRoundFight(any(Monster.class), any(Gamer.class))).thenReturn(true);
-        int rsl = startGame.execute();
+        int rsl = startGame.execute(knight, List.of(troll));
         assertThat(rsl).isEqualTo(LOOSE_OUT_GAME);
     }
 
