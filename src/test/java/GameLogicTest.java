@@ -14,7 +14,16 @@ public class GameLogicTest {
     @Test
     public void whenAttackModifierCalculation() {
         GameLogic gameLogic = new GameLogic();
-        int attack = 5;
+        int attack = 6;
+        int protection = 5;
+        int result = gameLogic.attackModifier(attack, protection);
+        assertThat(result).isEqualTo(2);
+    }
+
+    @Test
+    public void whenAttackLessProtectionThenModifierCalculation() {
+        GameLogic gameLogic = new GameLogic();
+        int attack = 3;
         int protection = 5;
         int result = gameLogic.attackModifier(attack, protection);
         assertThat(result).isEqualTo(1);

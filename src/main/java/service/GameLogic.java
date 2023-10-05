@@ -17,6 +17,9 @@ public class GameLogic {
     }
 
     public int attackModifier(int attack, int protection) {
+        if (attack <= protection) {
+            return MODIFIER_CONSTANT;
+        }
         return attack - protection + MODIFIER_CONSTANT;
     }
 
