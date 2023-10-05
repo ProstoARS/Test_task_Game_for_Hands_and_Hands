@@ -16,8 +16,8 @@ public class MemoryMonsterRepository implements IMonsterRepository {
         this.id = 1;
         this.monsters = new ArrayList<>();
         addMonster(new Monster("Троль", 15, 20, 20, new Damage(1, 8)));
-        addMonster(new Monster("Виверна", 20, 15, 15, new Damage(2, 6)));
-        addMonster(new Monster("Вурдалак", 25, 10, 23, new Damage(6, 10)));
+        addMonster(new Monster("Виверна", 18, 15, 15, new Damage(2, 6)));
+        addMonster(new Monster("Вурдалак", 22, 10, 23, new Damage(6, 8)));
     }
 
     @Override

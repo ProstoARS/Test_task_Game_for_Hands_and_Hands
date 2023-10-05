@@ -19,17 +19,17 @@ class FightTest {
     private final ByteArrayOutputStream output = new ByteArrayOutputStream();
 
     @BeforeEach
-    public void setUpStreams() {
+    void setUpStreams() {
         System.setOut(new PrintStream(output));
     }
 
     @AfterEach
-    public void cleanUpStreams() {
+    void cleanUpStreams() {
         System.setOut(null);
     }
 
     @Test
-    public void whenCharactersFightOneRoundThenHPDecrease() {
+    void whenCharactersFightOneRoundThenHPDecrease() {
         try (MockedStatic<GameLogic> mockedGameLogic = mockStatic(GameLogic.class)) {
             mockedGameLogic.when(GameLogic::gameCubeAction).thenReturn(5);
             Damage damage = mock(Damage.class);
@@ -46,7 +46,7 @@ class FightTest {
     }
 
     @Test
-    public void whenCharactersFightOneRoundThenAttackFail() {
+    void whenCharactersFightOneRoundThenAttackFail() {
         try (MockedStatic<GameLogic> mockedGameLogic = mockStatic(GameLogic.class)) {
             mockedGameLogic.when(GameLogic::gameCubeAction).thenReturn(3);
             GameLogic gameLogic = new GameLogic();
@@ -60,7 +60,7 @@ class FightTest {
     }
 
     @Test
-    public void whenCharactersFightOneRoundThenCharacterDeath() {
+    void whenCharactersFightOneRoundThenCharacterDeath() {
         try (MockedStatic<GameLogic> mockedGameLogic = mockStatic(GameLogic.class)) {
             mockedGameLogic.when(GameLogic::gameCubeAction).thenReturn(5);
             Damage damage = mock(Damage.class);

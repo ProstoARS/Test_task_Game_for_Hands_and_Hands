@@ -44,7 +44,7 @@ public class GameRunner {
             Gamer gamer = gamerRepository.findById(run);
             List<Monster> monsterList = monsterRepository.findAll();
             try {
-                run = new StartGame(input, out, gamer, monsterList).execute();
+                run = new StartGame(input, out, gamer, monsterList, new Fight(new GameLogic())).execute();
             } catch (InterruptedException | CharacterDeathException e) {
                 out.println("Игра зависла");
             }
@@ -58,7 +58,7 @@ public class GameRunner {
     }
 
     private void showMenu(List<UserAction> actions) {
-        out.println("==== Menu ====");
+        out.println("==== Меню ====");
         for (int index = 0; index < actions.size(); index++) {
             out.println(index + ". " + actions.get(index).name());
         }

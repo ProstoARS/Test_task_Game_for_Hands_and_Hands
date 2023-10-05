@@ -21,7 +21,7 @@ import static org.mockito.Mockito.when;
 class CharacterSelectionTest {
 
     @Test
-    public void whenChooseCharacter() {
+    void whenChooseCharacter() {
         Input in = mock(Input.class);
         Output out = new StubOutput();
         when(in.askInt(anyString())).thenReturn(1);
@@ -41,7 +41,7 @@ class CharacterSelectionTest {
     }
 
     @Test
-    public void whenWrongInput() {
+    void whenWrongInput() {
         Input in = mock(Input.class);
         Output out = new StubOutput();
         when(in.askInt(anyString())).thenReturn(2).thenReturn(1);

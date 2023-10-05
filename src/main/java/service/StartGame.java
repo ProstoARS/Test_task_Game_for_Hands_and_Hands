@@ -17,12 +17,18 @@ public class StartGame {
     private final Output output;
     private final Gamer gamer;
     private final List<Monster> monsters;
+    private final Fight fight;
 
-    public StartGame(Input input, Output output, Gamer gamer, List<Monster> monsters) {
+    public StartGame(Input input,
+                     Output output,
+                     Gamer gamer,
+                     List<Monster> monsters,
+                     Fight fight) {
         this.input = input;
         this.output = output;
         this.gamer = gamer;
         this.monsters = monsters;
+        this.fight = fight;
     }
 
     public String name() {
@@ -30,13 +36,13 @@ public class StartGame {
     }
 
     public int execute() throws InterruptedException, CharacterDeathException {
-        output.println("==== Start Game ====");
-        GameLogic gameLogic = new GameLogic();
-        Fight fight = new Fight(gameLogic);
+        output.println("==== Игра началась ====");
+
+        int recoveryAction = 4;
+
         for (Monster monster : monsters) {
             Thread.sleep(1000);
             int action;
-            int recoveryAction = 4;
             output.println(lineSeparator() + "--- " + gamer.getName()
                            + " на тебя напал " + monster.getName() + " ---");
             output.println("У " + monster.getName() + " " + monster.getHealth() + " здоровья");

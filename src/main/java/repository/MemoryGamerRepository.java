@@ -15,9 +15,9 @@ public class MemoryGamerRepository implements IGamerRepository {
     public void init() {
         this.id = 1;
         this.gamers = new ArrayList<>();
-        addGamer(new Gamer("Рыцарь", 15, 25, 30, new Damage(3, 9)));
-        addGamer(new Gamer("Варвар", 20, 18, 30, new Damage(5, 12)));
-        addGamer(new Gamer("Ниндзя", 30, 10, 20, new Damage(15, 20)));
+        addGamer(new Gamer("Рыцарь", 18, 25, 30, new Damage(3, 9)));
+        addGamer(new Gamer("Варвар", 22, 20, 30, new Damage(5, 12)));
+        addGamer(new Gamer("Ниндзя", 30, 17, 20, new Damage(15, 20)));
     }
 
     @Override

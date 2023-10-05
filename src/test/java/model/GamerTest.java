@@ -9,7 +9,7 @@ import static org.mockito.ArgumentMatchers.*;
 class GamerTest {
 
     @Test
-    public void whenGamerRecoveryHealth() throws CharacterDeathException {
+    void whenGamerRecoveryHealth() throws CharacterDeathException {
         Gamer gamer = new Gamer(anyString(), anyInt(), anyInt(), 30, any(Damage.class));
         gamer.setHealth(10);
         int result = gamer.getHealth() + gamer.recoveryHealth();
@@ -18,7 +18,7 @@ class GamerTest {
     }
 
     @Test
-    public void whenGamerRecoveryHealthThenHealthNotRiseMaxValue() throws CharacterDeathException {
+    void whenGamerRecoveryHealthThenHealthNotRiseMaxValue() throws CharacterDeathException {
         Gamer gamer = new Gamer(anyString(), anyInt(), anyInt(), 30, any(Damage.class));
         gamer.setHealth(25);
         int result = gamer.getHealth() + gamer.recoveryHealth();
