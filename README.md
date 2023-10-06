@@ -1,7 +1,16 @@
 
 [![My_Build](https://github.com/ProstoARS/Test_task_Game_for_Hands_and_Hands/actions/workflows/maven-publish.yml/badge.svg)](https://github.com/ProstoARS/Test_task_Game_for_Hands_and_Hands/actions/workflows/maven-publish.yml)
 
-## Тестовое задание для поступающих в школу разработки Heads x Hands
+#### Telegram для связи: https://t.me/ProstoARS
+
+### Требования к запуску
+
+Для запуска программы требуется установленной JRE 17.
+
+1. Переходим в коммандную строку: для этого нажимаем "win + R" и вводим "cmd" и жмём Enter.
+2. В коммандной строке переходим в рутовую директорию приложения.
+3. Вводим: "java -jar Test_task_Game_for_Hands_and_Hands-1.0-SNAPSHOT.jar"
+### Тестовое задание для поступающих в школу разработки Heads x Hands
 
 Спроектируйте и реализуйте классы для одной видеоигры. Реализацию опубликуйте в открытом репозитории на github. В readme репозитория оставьте свое имя пользователя в Telegram для связи.
 Условия:
